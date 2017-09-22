@@ -1,7 +1,24 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!--==========================
+Hero Section
+============================-->
+
+<header>
+  <section id="hero">
+    <div class="hero-container">
+      <div class="wow fadeIn">
 
 
+        <h1>Evaluate Your Home</h1>
+        <h2>Machine learning empowered app with model trained with data of 1460 houses.</h2>
+        <div class="actions">
+          <a (click)="scrollToForm()" class="btn-get-started">Get Strated</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
 
+<section id="about">
 
 <div class="clearfix"></div>
 <div class="container mycontainer">
@@ -26,23 +43,51 @@
 <div class="clearfix">&nbsp;</div>
 
 
-<ng-template #template>
+<ng-template #template >
   <div class="modal-header">
     <!-- <h4 class="modal-title pull-left">Evaluating...</h4> -->
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" style="height: 300px;">
     <div class="text-center" *ngIf="!forecasted">
       <img src="../assets/img/preloader.gif" >
       <h2>Calculating... </h2>
     </div>
 
     <div class="text-center" *ngIf="forecasted">
+      <br>
       <h2>Estimated price of this house is: </h2>
       <h2> {{forecastedVal | currency}} </h2>
     </div>
 
   </div>
 </ng-template>
+
+</section>
+
+
+<!--==========================
+Footer
+============================-->
+<footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="copyright">
+            &copy; Copyright <strong>Digitegra </strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
+            -->
+            Bootstrap Themes by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</footer><!-- #footer -->

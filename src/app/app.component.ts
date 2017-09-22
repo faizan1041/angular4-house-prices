@@ -6,7 +6,7 @@ import { ForecastService } from './forecast.service'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import {ActivatedRoute} from '@angular/router'; // <-- do not forget to import
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -69,6 +69,9 @@ export class AppComponent implements OnInit {
   }
 
 
+  scrollToForm(){
+    window.scrollTo(0,$('header').height());
+  }
 
 
 
