@@ -11,7 +11,7 @@ Hero Section
         <h1>Evaluate Your Home</h1>
         <h2>Machine learning empowered app with model trained with data of 1460 houses.</h2>
         <div class="actions">
-          <a (click)="scrollToForm()" class="btn-get-started">Get Strated</a>
+          <a (click)="scrollToForm()" class="btn-get-started btn-gray"> <i class="fa fa-chevron-down" aria-hidden="true"></i> Get Strated </a>
         </div>
       </div>
     </div>
@@ -34,8 +34,8 @@ Hero Section
 
       <li class="col-md-12 text-center">
     <br>
-        <button class="btn btn-primary btn-lg"
-      (click)="openModal(template,forecast)">Calculate</button>
+        <button class="btn btn-gray btn-lg btn-block"
+      (click)="openModal(template,forecastModel)">Calculate</button>
       </li>
     </ul>
 
@@ -45,7 +45,7 @@ Hero Section
 
 <ng-template #template >
   <div class="modal-header">
-    <!-- <h4 class="modal-title pull-left">Evaluating...</h4> -->
+    <h4 class="modal-title pull-left">Price of this house:</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>

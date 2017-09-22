@@ -43,6 +43,7 @@ export class AppComponent implements OnInit {
   }
 
   add(fc: ForecastModel): void {
+    this.forecasted = false;
     fc = this.forecastModel;
     if (!fc) { return; }
 

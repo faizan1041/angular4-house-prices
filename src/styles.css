@@ -4,3 +4,14 @@
 header h1 { font-size:70px; margin-top:7%;}
 .mycontainer { max-width:1000px; background:#FFF; padding:3%; border:1px solid #dadada; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.2); }
 footer { float:left; width: 100%; background: #666; color:#FFF; text-align:center; margin-top:3%; padding:10px 0; }
+
+
+.btn-gray, .btn-gray:hover {
+    background: #111 !important;
+    border-color: #111 !important;
+    color: white;
+}
+
+.container.mycontainer {
+    background: #ededed;
+}
