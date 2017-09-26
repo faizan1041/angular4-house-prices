@@ -3,10 +3,13 @@ import { HttpClient, HttpErrorResponse, HttpRequest, HttpEventType,HttpResponse 
 import { Forecast } from './forecast.class';
 import { ForecastModel } from './forecast.model';
 import { ForecastService } from './forecast.service'
+import { MetaService } from './meta.service'
+import { Meta } from './meta.interface'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import {ActivatedRoute} from '@angular/router'; // <-- do not forget to import
 import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-root',
@@ -17,6 +20,8 @@ export class AppComponent implements OnInit {
   title = 'app';
   results = '';
   forecast:Forecast;
+  meta: Meta;
+  metas:Meta[];
   forecastModel:ForecastModel;
   forecast_keys:Array<string>;
   modalRef: BsModalRef;
@@ -26,19 +31,37 @@ export class AppComponent implements OnInit {
 
   // static readonly api_url = 'http://127.0.0.1:8000/';
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private forecastService: ForecastService, private modalService: BsModalService){
+  constructor(private route: ActivatedRoute,
+    private http: HttpClient,
+    private forecastService: ForecastService,
+    private metaService: MetaService,
+    private modalService: BsModalService){
     this.forecast = new Forecast;
     this.forecastModel = new ForecastModel;
     this.forecasted = false;
   }
   ngOnInit(): void {
-    this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
-    this.forecastService.getOne(1).then(response => {
-      this.forecastModel = response;
-      this.forecast_keys = Object.keys(this.forecast);
 
-      console.log(this.forecastModel);
+    this.metaService.getAllData().then(response => {
+      this.metas = response;
+
+      // console.log(this.metas);
+
+      this.forecastService.getOne(1).then(response => {
+        this.forecastModel = response;
+        this.forecast_keys = Object.keys(this.forecast);
+
+
+
+        // console.log(this.forecast_keys);
+        // console.log(this.forecastModel);
+      });
+
     });
+
+
+
+
 
   }
 
@@ -72,6 +95,34 @@ export class AppComponent implements OnInit {
 
   scrollToForm(){
     window.scrollTo(0,$('header').height());
+  }
+
+  findMeta(metas:Meta[], str:string): Meta {
+    for (let meta of metas) {
+        if(meta.meta_key == str){
+          return meta;
+        }
+    }
+
+    return {id:0, meta_key: '', meta_val: ''};
+
+  }
+
+  hasMeta(metas:Meta[], str:string) {
+    for (let meta of metas) {
+        if(meta.meta_key == str){
+          return true;
+        }
+    }
+
+    return false;
+
+  }
+
+  toArray(str:string): string[] {
+    str = str.replace('[','').replace(']','').replace(/'/g,'');
+    let arr = str.split(',');
+    return arr;
   }
 
 

@@ -6,8 +6,10 @@ import { AuthInterceptor } from './auth.interceptor';
 import { FormsModule }   from '@angular/forms';
 import { AppRoutingModule }     from './app-routing.module';
 import { ForecastService } from './forecast.service'
+import { MetaService } from './meta.service'
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+
 
 import { AppComponent } from './app.component';
 
@@ -29,7 +31,8 @@ import { AppComponent } from './app.component';
     useClass: AuthInterceptor,
     multi: true
   },
-  ForecastService
+  ForecastService,
+  MetaService
 ],
   bootstrap: [AppComponent]
 })
